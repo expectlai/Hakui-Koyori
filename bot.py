@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import json
+import random
 
 with open("setting.json", "r", encoding='utf8') as jfile:
     jdata = json.load(jfile)
@@ -14,6 +15,11 @@ async def on_ready():
 @bot.command()
 async def ping(ctx):
     await ctx.send(f'{round(bot.latency*1000)} (ms)')
+
+@bot.command()
+async def avatar(ctx):
+    img = discord.File(f'.\\image\\img ({random.randint(1,150)}).jpg')
+    await ctx.send(file = img)
 
 # @bot.event
 # async def on_member_join(member):
